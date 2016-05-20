@@ -1,0 +1,80 @@
+input[type="checkbox"].grade-check {
+  margin-top: 6px;
+  margin-right: 5px;
+}
+
+div.bordered {
+  border: 1px solid #aaa;
+}
+
+table .sortable:before,
+table .sortable.asc:before {
+  content: '\25b2';
+}
+
+table .sortable.desc:before {
+  content: '\25bc';
+}
+
+input[type="file"].bulk-upload-input {
+  display: inline-block;
+  width: 200px; 
+}
+
+body.dragging, 
+body.dragging * {
+  cursor: move !important;
+}
+
+table.sortable-table {
+  tr {
+    cursor: pointer;
+
+    &.dragged {
+      position: absolute;
+      opacity: 0.5;
+      z-index: 2000;
+    }
+
+    &.placeholder {
+      display: block;
+      background: red;
+      position: relative;
+      margin: 5px;
+      padding: 0;
+      border: none;
+    }
+
+    &.placeholder:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 5px solid transparent;
+      border-left-color: red;
+      margin-top: -5px;
+      left: -5px;
+      border-right: none;
+    }
+  }
+}
+
+.question-image {
+  width: 100px;
+  height: 100px;
+}
+
+.test-progress {
+  .progress {
+    height: 10px;
+    border-radius: 10px;
+  }
+}
+
+.section-line {
+  border-top: 2px solid $c-gray-text;
+}
+
+.form-group input[type="checkbox"] {
+  margin-top: 10px;
+}

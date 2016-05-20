@@ -1,0 +1,33 @@
+<td>
+  <%= id + 1 %>
+</td>
+<td>
+  <%= test.name %>
+</td>
+<td>
+  <%= test.syllabus %>
+</td>
+<td>
+  <%= test.topic %>
+</td>
+<td>
+  <%= test.subject %>
+</td>
+<td>
+  <%= test.grade %>
+</td>
+<td>
+  <%= test.questions.present? ? test.questions.length : 0 %>
+</td>
+<td>
+  <%= test.allow_retry ? "Yes" : "No" %>
+</td>
+<td style="width: 200px;">
+  <%= link_to "Edit", edit_admin_test_path(test) %>
+  &nbsp;|&nbsp;
+  <%= link_to "Remove", admin_test_path(test), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  &nbsp;|&nbsp;
+  <%= link_to "Questions", admin_test_questions_path(test) %>
+  &nbsp;|&nbsp;
+  <%= link_to "Preview", test_start_path(test) %>
+</td>

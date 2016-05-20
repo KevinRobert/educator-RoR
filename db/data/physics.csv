@@ -1,0 +1,31 @@
+SI_No,Subject,Topic,Question_Type,Difficulty,Question,Image (Optional),Option_1,Option_2,Option_3,Option_4,Concept_1,Concept_2,Concept_3,answers,answer_value,Timed
+Q1,Physics,Forces,Choose,Easy,A ray of light incident obliquely on a lens does not suffer any refraction. The ray is passing through the,,principal forms of lens,centre of curvature of lens,optical centre of lens,none of the above,,,,3,,Yes
+Q2,Physics,Forces,Choose,Easy,"An object is placed in between and of a convex lens, the nature of image formed by the lens is",,"real, inverted and magnified","real, erect and magnified","virtual, erect and magnified","real, inverted and diminished",,,,1,,Yes
+Q3,Physics,Motion in 1 Dimension,Choose,Easy,The least distance of distinct vision for a normal eye is,,> 30 cm,> 25 cm,25 cm,< 25 cm,,,,3,,Yes
+Q4,Physics,Motion in 1 Dimension,Choose,Tough,The crystalline lens is held in position in the eyeball,,suspensory ligament,a ring of library nessery,cardiac muscles,none of the above,,,,2,,Yes
+Q5,Physics,Work Power and Energy,Choose,Moderate,The work done by the weight of a 1kg mass while it moves up through 1m is,,9.8J,-9.8J,1/9.8J,-1/9.8J,,,,2,,Yes
+Q6,Physics,Work power and energy,Choose,Tough,"When a stone tied to a string is whirled in a circle, the work done on it by the string is",,positive,negative,zero,undefined,,,,3,,Yes
+Q7,Physics,Sound,Choose,Tough,In which of the following cases is the potential energy of a spring minimum?,,when it is compressed,when it is extended,when it is at it’s natural length,when it is at it’s natural length but is kept at a,,,,3,,Yes
+Q8,Physics,Sound,Choose,Easy,A lighter and a heave body has equal momentum which one has greater kinetic energy?,,Light body,Heavy body,Both have same value,Insufficient data to predict,,,,1,,Yes
+Q9,Physics,Waves,Choose,Easy,A trolley of mass 2kg moves with an acceleration 3m/s2. The change in momentum in one second is,,2/3kg m/s,3/2kg m/s,6kg m/s,None of the above,,,,3,,Yes
+Q10,Physics,Heat,Choose,Easy,How heavy an object can you hold vertically if you can apply only one newton of force?,,120 kg,120 g,102 g,102 kg,,,,3,,Yes
+Q11,Physics,Heat,Choose,Moderate,The heat capacity of a solid of mass 175 g is 315 J/oC. Then the specific heat capacity _________ J/g/ oC,,1.8,0.9,2.4,3.2,,,,1,,Yes
+Q12,Physics,Light,Choose,Easy,Latent heat of fussion is the heat energy supplied to the solid so as to change it into liquid without any rise in _________,,volume,pressure,temperature,both (a) & (b),,,,3,,Yes
+Q13,Physics,Light,Choose,Easy,The unit of molar heat capacity ,,J mole-1k-1,J mole-1c-1,mole-1Jc-1,both (a) & (b),,,,4,,Yes
+Q14,Physics,Static electricity,Choose,Moderate,Absolute zero temperature is,,0C,0F,0K,273K,,,,3,,Yes
+Q15,Physics,Static Electricity,Choose,Tough,In case of prism,,I + e = A + D,I + A = e + D,I + D = A + e,None of the above,,,,1,,Yes
+Q16,Physics,Motion in 1 Dimension,Fill,Moderate,"An engine can pump 30, 000 litres of water to a vertical height of 45m in 10 minutes. The power of the engine is ________.",,,,,,,,,,22050 kw,Yes
+Q17,Physics,Current,Fill,Easy,A ball is dropped from a height H. When it reaches the ground it’s velocity is 40 m/s. Then the height H is _________.,,,,,,,,,,81.6 m,Yes
+Q18,Physics,Forces,Fill,Easy,"A burner supplies heat energy at a rate of 434 J/s for 60 s when 40 g of ice at 0oC changes to water at 75oC, then the latent heat of ice is _________.",,,,,,,,,,336 J/s,Yes
+Q19,Physics,Forces,Fill,Easy,A postage stamp appears raised by 7mm when placed under a rectangular glass of ________ mm thickness and refractive index is 1.5.,,,,,,,,,,21 mm,Yes
+Q20,Physics,Light,Fill,Easy,-40C = _________ F,,,,,,,,,,(40oF),Yes
+Q21,Physics,Light,Fill,Easy,"A liquid A of specific heat capacity 1050 J/kg/k and at 90oC is mixed with the liquid B of specific heat capacity 2362.5 J/kg/k and at 20oC. When the final temperature recorded as 50oC, ________ is the (A : B) proportion the mights of liquid are mixed.",,,,,,,,,,27:16,Yes
+Q22,Physics,Light,Fill,Easy,An object is placed at a distance of 10 cm from a convex lens of focal length 15cm. ________ cm is the position of the image formed.,,,,,,,,,,30 cm,Yes
+Q23,Physics,Light,Fill,Easy,An object 1cm high is placed at a distance of 4 cm from a convex lens of focal length 6cm. The size of the image is _________ cm.,,,,,,,,,,3 cm,Yes
+Q24,Physics,Light,Fill,Easy,The velocity of light is diamond is. The refractive index of the diamond is _________.,,,,,,,,,,2.48,Yes
+Q25,Physics,Light,Fill,Easy,A pond of depth 20 cm is filled with water of refractive index 4/3 _______ cm is the apparent depth of the table when viewed normally.,,,,,,,,,,15 cm,Yes
+Q26,Physics,Light,True (or) False,Easy,The convergents action of a convex lens is due to dispersion of light.,,TRUE,FALSE,,,,,,2,,Yes
+Q27,Physics,Light,True (or) False,Easy,"According to sign convensions, the distance measured agains the direction of incident light are taken negative.",,TRUE,FALSE,,,,,,1,,Yes
+Q28,Physics,Light,True (or) False,Easy,A rubber band has more potential energy when wrapped around a pocket then when it was lying curved.,,TRUE,FALSE,,,,,,1,,Yes
+Q29,Physics,Light,True (or) False,Easy,The velocity of light in air is more as compared to velocity of light in glass.,,TRUE,FALSE,,,,,,1,,Yes
+Q30,Physics,Light,True (or) False,Easy,Ice cream at 0oC feels less colder than water at the same temperature.,,TRUE,FALSE,,,,,,2,,Yes

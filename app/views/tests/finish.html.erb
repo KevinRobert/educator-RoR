@@ -1,0 +1,16 @@
+<div class="container text-center">
+  <h1>Congratulations!</h1>
+
+  <div class="row mt30">
+    <div class="col-md-12">
+      <div>Correct Answers: <strong><%= @correct_answers_count %></strong></div>
+      <div class="mt10">Wrong Answers: <strong><%= @wrong_answers_count %></strong></div>
+      <div>Skipped Questions: <strong><%= @skipped_answers_count %></strong></div>
+      <div class="mt10">Elapsed Time: <strong><%= @elapsed_time.to_i %>s</strong></div>
+    </div>
+  </div>
+
+  <!-- <div class="row mt30">
+    <%= link_to 'Restart Test', test_test_path(@test), :class => 'btn btn-large btn-primary' %>
+  </div> -->
+</div>

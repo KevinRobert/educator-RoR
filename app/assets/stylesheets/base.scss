@@ -1,0 +1,126 @@
+
+.mt5 {
+  margin-top: 5px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.mt30 {
+  margin-top: 30px;
+}
+
+.mb5 {
+  margin-bottom: 5px;
+}
+
+.mb15 {
+  margin-bottom: 15px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
+.mb50 {
+  margin-bottom: 50px;
+}
+
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.ml15 {
+  margin-left: 15px;
+}
+
+.pt15 {
+  padding-top: 15px;
+}
+
+.no-gutter {
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+
+.q-header-navbar {
+
+  .dropdown-menu {
+    min-width: 100px !important;
+    padding: 0px;
+
+    li > a {
+      padding: 8px 20px;
+    }
+
+    li > a:hover, 
+    li > a:focus {
+      background-color: #eee;
+    }
+  }
+}
+
+a.non-active {
+  pointer-events: none;
+  cursor: default;
+  color: #555 !important;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $c-main-black;
+}
+
+
+
+.homeBGShaded {
+  background-color: #DCDCDC;
+  background-repeat: no-repeat;
+  background-size: cover; 
+
+}
+
+.homeBGClear {
+  background-repeat: no-repeat;
+  background-size: cover;  
+  
+}
+
+img.hiw {
+  max-height: 125px;
+  max-width: 100%;
+}
+
+.fa.fa-green {
+  color: green;
+}
+
+.fa.fa-red {
+  color: $c-red-color;
+}
+
+// Override bootstrap-select classes
+.bootstrap-select {
+  .btn-default:focus,
+  .btn-default.focus, {
+    border-color: #66afe9;
+    outline: 0;
+    background-color: #fff;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  }
+
+  > .btn-default.dropdown-toggle:hover, 
+  > .btn-default.dropdown-toggle:focus {
+    background-color: #fff;
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0px auto -webkit-focus-ring-color !important;
+  }
+}

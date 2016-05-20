@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12 alert alert-info border-bottom">
+      <%= link_to "Back To Admin Dashboard", dashboard_index_path %>
+    </div>
+  </div>
+
+  <div class="row mt10">
+    <div class="col-md-12">
+      <p>Welcome <%= current_user.name %></p>
+      <h3><%= @section_test.test.name %> Summary for <%= @section_test.section.grade %> - <%= @section_test.section.name %></h3>
+      <p>Subject: <%= @section_test.test.subject %>, Chapter: <%= @section_test.test.topic %></p>
+      <p class="mt10"><strong><%= @section_completion_rate %>%</strong> of all <%= @section_test.section.name %> students in your school completed this test.</p>
+      <p class="mt10"><strong><%= @school_completion_rate %>%</strong> of all <%= @section_test.section.grade %> students in your school completed this test.</p>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+              <thead>
+                <tr>
+                  <td>National Percentile</td>
+                  <td>School Percentile</td>
+                  <td><%= @section_test.section.name %> Percentile</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Top 25%</td>
+                  <td><%= percentile(@students_test_taken.length, @top_25_students.length) %></td>
+                  <td><%= percentile(@section_students_test_taken.length, @top_25_section_students.length) %></td>
+                </tr>
+                <tr>
+                  <td>Top 50%</td>
+                  <td><%= percentile(@students_test_taken.length, @top_50_students.length) %></td>
+                  <td><%= percentile(@section_students_test_taken.length, @top_50_section_students.length) %></td>
+                </tr>
+                <tr>
+                  <td>Bottom 50%</td>
+                  <td><%= percentile(@students_test_taken.length, @top_75_students.length) %></td>
+                  <td><%= percentile(@section_students_test_taken.length, @top_75_section_students.length) %></td>
+                </tr>
+                <tr>
+                  <td>Bottom 25%</td>
+                  <td><%= percentile(@students_test_taken.length, @last_students.length) %></td>
+                  <td><%= percentile(@section_students_test_taken.length, @last_section_students.length) %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Summary of Student Performance for <%= @section_test.section.name %></h3>
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Percentile</td>
+              <td>Student Name</td>
+              <td>Correct Answers</td>
+              <td>Score (as %)</td>
+              <td>Time Spend on Test</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @top_25_section_students.each do |student_test| %>
+              <tr class = "success">
+                <td>Top 25%</td>
+                <td><%= student_test.user.name %></td>
+                <td><%= student_test.correct_answers %>/<%= student_test.total_questions %></td>
+                <td><%= student_test.score %>%</td>
+                <td><%= '%.2f' % (student_test.time / 60.0) %> mins</td>
+                <td><%= link_to 'View', portal_result_path(student_test.id) %></td>
+              </tr>
+            <% end %>
+
+            <% @top_50_section_students.each do |student_test| %>
+              <tr class = "active">
+                <td>Top 50%</td>
+                <td><%= student_test.user.name %></td>
+                <td><%= student_test.correct_answers %>/<%= student_test.total_questions %></td>
+                <td><%= student_test.score %>%</td>
+                <td><%= '%.2f' % (student_test.time / 60.0) %> mins</td>
+                <td><%= link_to 'View', portal_result_path(student_test.id) %></td>
+              </tr>
+            <% end %>
+
+            <% @top_75_section_students.each do |student_test| %>
+              <tr class = "warning">
+                <td>Bottom 50%</td>
+                <td><%= student_test.user.name %></td>
+                <td><%= student_test.correct_answers %>/<%= student_test.total_questions %></td>
+                <td><%= student_test.score %>%</td>
+                <td><%= '%.2f' % (student_test.time / 60.0) %> mins</td>
+                <td><%= link_to 'View', portal_result_path(student_test.id) %></td>
+              </tr>
+            <% end %>
+
+            <% @last_section_students.each do |student_test| %>
+              <tr class = "danger">
+                <td>Bottom 25%</td>
+                <td><%= student_test.user.name %></td>
+                <td><%= student_test.correct_answers %>/<%= student_test.total_questions %></td>
+                <td><%= student_test.score %>%</td>
+                <td><%= '%.2f' % (student_test.time / 60.0) %> mins</td>
+                <td><%= link_to 'View', portal_result_path(student_test.id) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,244 @@
+$qmark-width: 40px;
+
+.q-no-section {
+  width: $qmark-width;
+
+  .q-no-circle {
+    width: $qmark-width;
+    height: $qmark-width;
+    border-radius: $qmark-width;
+    border: 1px solid $c-main-black;
+    text-align: center;
+
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+    color: $c-main-black;
+  }
+
+  .q-total-count {
+    text-align: center;
+    color: $c-mark-color;
+  }
+}
+
+.q-section {
+  margin-left: 15px;
+  width: calc(100% - #{$qmark-width} - 15px);
+
+  .q-question-type {
+    color: #666;
+    font-weight: bold;
+  }
+
+  .q-question-desc {
+    color: $c-gray-text;
+  }
+
+  .q-option {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+
+    &:last-child {
+      border-bottom: 1px solid #ccc;
+    }
+
+    &.selected {
+      -webkit-box-shadow: inset 0px 0px 15px 0px rgba(240,132,0,0.89);
+      -moz-box-shadow: inset 0px 0px 15px 0px rgba(240,132,0,0.89);
+      box-shadow: inset 0px 0px 15px 0px rgba(240,132,0,0.89);
+    }
+
+    .q-option-index {
+      width: 25px;
+      height: 25px;
+      border: 1px solid #333;
+      border-radius: 25px;
+      text-align: center;
+      line-height: 25px;
+
+      &.selected {
+        background-color: $c-mark-color;
+      }
+    }
+
+    .q-option-desc {
+      width: calc(100% - 40px);
+      margin-left: 10px;
+      margin-top: 2px;
+    }
+  }
+
+  .MathJax_Display {
+    text-align: left !important;
+  }
+}
+
+.q-image {
+  margin-left: 10px;
+  height: 200px;
+}
+
+.q-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #FFEFDD;
+  margin-bottom: 0px;
+
+  [class^=col-xs-] {
+    height: 40px;
+    display: table;
+    vertical-align: middle;
+  }
+
+  .q-submit-answer {
+    height: 40px;
+    font-size: 15px;
+    border-radius: 0px;
+  }
+
+  .q-nav-icon {
+    display: table-cell;
+    vertical-align: middle;
+
+    a {
+      color: $c-red-color;
+      font-size: 17px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    [class^=col-xs-] {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    .q-submit-answer {
+      height: 40px;
+      font-size: 11px;
+      padding: 5px;
+    }
+  }
+}
+
+.pause-screen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.95;
+  display: none;
+  z-index: 2000;
+  color: white;
+}
+
+.q-pause-desc {
+  position: absolute;
+  top: 50%;
+  display: none;
+  text-align: center;
+}
+
+.q-end-test {
+  margin-top: 5px;
+  text-align: right;
+
+  a {
+    color: $c-red-color;
+    cursor: pointer;
+
+    &:hover {
+      color: $c-red-color;
+    }
+  }
+}
+
+.MJXc-display {
+  text-align: left !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.MathJax_Preview {
+  display: none !important;
+}
+
+.q-reading-section {
+  border-left: 1px solid #bbb;
+
+  .q-reading-line {
+    width: $qmark-width;
+    text-align: center;
+    float: left;
+    display: inline-block;
+
+    span {
+      display: block;
+      position: absolute;
+      left: 25px;
+    }
+  }
+
+  .q-reading-desc {
+    margin-left: 40px;
+    width: calc(100% - #{$qmark-width} - 15px);
+    white-space: pre-line;
+    display: inline-block;
+    float: left;
+  }
+}
+
+.q-report-problem {
+  margin-top: 5px;
+
+  a {
+    color: $c-red-color;
+  }
+}
+
+.q-time-ctrl {
+  display: inline-block;
+  margin-top: -5px;
+
+  a {
+    color: $c-main-black;
+    font-size: 17px;
+  }
+  
+}
+
+.q-ellapse-time {
+  margin-left: 5px;
+  font-size: 20px;
+  display: inline-block;
+}
+
+@media (max-width: 500px) {
+  [class^=col-xs-] {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+
+  .q-report-problem {
+    font-size: 12px;
+  }
+
+  .q-time-ctrl a {
+    font-size: 12px;
+  }
+
+  .q-ellapse-time {
+    font-size: 15px;
+  }
+
+  .q-end-test {
+    font-size: 12px;
+  }
+}

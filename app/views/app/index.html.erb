@@ -1,0 +1,21 @@
+<div class="container text-center">
+  <% unless current_user.student? %>
+    <h1>This is first screen after sign-in</h1>
+  <% else %>
+    <% if @test_time_available == 1 %>
+      <div class="col-md-12 mt10">
+        <h3>
+          Your <%= @section_test.test.subject %> test will begin in 
+          <% if @time_diff[0] > 0 %>
+            <%= @time_diff[0] %>days and&nbsp;
+          <% end %>
+          <%= @time_diff[1] %>hours.
+        </h3>
+      </div>
+    <% else %>
+      <div class="col-md-12 mt10">
+        <h3>No tests assigned to you at this time</h3>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,24 @@
+<td>
+  <%= user.name %>
+</td>
+<td>
+  <%= user.username %>
+</td>
+<td>
+  <%= user.school.name if user.school.present? %>
+</td>
+<td>
+  <%= user.role.titleize %>
+</td>
+<td>
+  <%= user.contact_email %>
+</td>
+<td>
+  <%= link_to "Edit", edit_admin_user_path(user) %>
+  <% if user != current_user %>
+    &nbsp;|&nbsp;
+    <%= link_to (user.active ? "Disable" : "Enable"), admin_user_disable_path(user), method: :post, :remote => true, :class => "user-disable-link" %>
+    &nbsp;|&nbsp;
+    <%= link_to "Delete", admin_user_path(user), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  <% end %>
+</td>

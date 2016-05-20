@@ -1,0 +1,31 @@
+SI_No,Subject,Topic,Question_Type,Difficulty,Question,Image (Optional),Option_1,Option_2,Option_3,Option_4,Concept_1,Concept_2,Concept_3,answers,Timed
+Q1,Chemistry,Application,Problem,Easy,Order of increase in atomic size.,,Ba > Mg > Sr > Ca,Ca > Sr > Mg > Ba,Ca < Mg < Ba < Sr,Mg < Ca < Sr < Ba,,,,1,Yes
+Q2,Chemistry,Application,Problem,Easy,Which of the following gives carbon dioxide on heating?,,Slaked lime,Lime Stone,Quick lime,Soda ash,,,,4,No
+Q3,Chemistry,Application,Problem,Easy,Chemical bond is formed between the two atoms.,,due to attractive force only,due to repulsive  force only,When repulsive force > attractive force,when energy of compound is less than atom,,,,3,Yes
+Q4,Chemistry,Application,Problem,Tough,The ion that is isoelectronic with CO is,,$O_2^+$,$O_2^-$,$CN^-$,$N_2^+$,,,,1,No
+Q5,Chemistry,Application,Problem,Moderate,Mendeleev’s periodic table is based on,,Mass Number,Atomic number,a & b both,none,,,,2,Yes
+Q6,Chemistry,Application,Problem,Tough,$NH_3$ and $BF_3$ form bond readily because of the formation of,,an ionic bond,covalent bond,hydrogen bond,coordinate bond,,,,3,Yes
+Q7,Chemistry,Application,Problem,Tough,Strength of a weak acid and weak base depends upon,,temperature,nature of solvent,degree of dissociation,all of these,,,,4,Yes
+Q8,Chemistry,Application,Problem,Easy,Displacement activity series in halogens.,,Br > F > I > Cl,Cl > Br > I > F,F > Cl > Br > I,I > Br > Cl > F,,,,2,Yes
+Q9,Chemistry,Application,Problem,Easy,Atoms of following group contains lower ionization energy,,IA,IIA,VA,Zero,,,,,Yes
+Q10,Chemistry,Application,Problem,Easy,Which of the following species has the highest Ionization Potential?,,$Li^+$,$Mg^{2+}$,$Al^{3+}$,Ne,,,,1,Yes
+Q11,Chemistry,Application,Problem,Moderate,Which of the following is an acidic salt?,,$Na_3PO_4$,$Na_2HPO_3$,$NaH_2PO_2$,$NaH_2PO_4$,,,,3,Yes
+Q12,Chemistry,Application,Problem,Easy,Electron that take part in chemical bonding are,,Core electrons,(n - 2) Electrons,Valence shell electrons,Stationary electrons,,,,4,Yes
+Q13,Chemistry,Application,Problem,Easy,Which of the following is a tetravalent?,,Nitride,Phosphate,Ferricyanide,Ferrocyanide,,,,4,Yes
+Q14,Chemistry,Application,Problem,Moderate,Duplet rule is followed by,,Neon,Helium,Argon,Hydrogen,,,,1,Yes
+Q15,Chemistry,Application,Problem,Tough,pH of a solution is given by,,pH =  log [$H^+$],pH = log $frac{1}{H_2}$,pH = $pK_10 - POH$,all the above,,,,4,Yes
+Q16,Chemistry,Application,Problem,Moderate,Electronic configuration of Cr is,,$[Ar]4s^2 3d^5$,$[Ar]4s^2 3d^0$,$[Ar]4s^{0}3d^3$,$[Ar]4s^13d^5$,,,,3,Yes
+Q17,Chemistry,Application,Problem,Easy,Be shows diagonal relation with,,Al,Si,Mg,Na,,,,1,Yes
+Q18,Chemistry,Application,Problem,Easy,Aqueous solution of salt of weak acid and strong base,,has $[H^+] < [OH^-]$,is basic in nature,has pH greater than 7,all the above,,,,2,Yes
+Q19,Chemistry,Application,Problem,Easy,The correct order of electronegativity is,,F > Cl < Br > I,F > O > N > C,S < O < Se < Te,All the above,,,,4,Yes
+Q20,Chemistry,Application,Problem,Easy,X and Y belong to the same group .Valence electrons of X is 3.What is the valence electrons of Y,,1,2,3,4,,,,3,Yes
+Q21,Chemistry,Application,Problem,Easy,Which of the following is an oxidising agent?,,$H_2$,CO,$H_2O_2$,$SO_2$,,,,3,Yes
+Q22,Chemistry,Application,Problem,Easy,p – orbitals can form,,sigma bond,bond,both the bonds,none,,,,3,Yes
+Q23,Chemistry,Application,Problem,Easy,Which of the following is a deliquescent substance?,,$FeCl_3$,$CaCl_2$,$H_2SO_4$,$P_2O_5$,,,,3,Yes
+Q24,Chemistry,Application,Problem,Easy,The ionisation energy of nitrogen is more than that of oxygen because,,of extra stability of half filled p orbitals in nitrogen,of the small size of nitrogen,the former contains less number of electrons,the former is less electronegative,,,,3,Yes
+Q25,Chemistry,Application,Problem,Easy,Ionic nature of the bond is lowest in,,$CaI_2$,$CaF_2$,$CaBr_2$,$CaCl_2$,,,,3,Yes
+Q26,Chemistry,Application,Problem,Easy,Which of the following is soluble?,,NaOH,$Ca(OH)_2$,$Mg(OH)_2$,CaO,,,,3,Yes
+Q27,Chemistry,Application,Problem,Easy,The strength of bonds increases in the order,,Vander waal's force < Hydrogen bond < Covalent bond < Ionic bond,Hydrogen bond < Vander waal's force < Covalent bond < Ionic bond,Vander waal's force < Hydrogen bond < Ionic < Covalent,Vander waal's force < Hydrogen bond < Ionic = Covalent ,,,,3,Yes
+Q28,Chemistry,Application,Problem,Easy,pH of a solution is independent of ,,Temperature,nature of the solution,degree of dissociation of acid (or) base,volume of the solution,,,,3,Yes
+Q29,Chemistry,Application,Problem,Easy,Reduction is the,,decrease in positive valency,increase in negative valency,both (a) & (b),none of these,,,,3,Yes
+Q30,Chemistry,Application,Problem,Easy,Two electrons of atom A and two electrons of atom B of different electronegativity are utilized to form a compound AB. This is an example of,,Polar covalent bond,non polar covalent bond,electrovalent bond,coordinate covalent bond,,,,3,Yes

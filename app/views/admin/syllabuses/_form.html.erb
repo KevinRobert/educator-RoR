@@ -1,0 +1,44 @@
+<%= form_for [:admin, @syllabus], html: { class: "form-horizontal" } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :syllabus, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :syllabus, Syllabus::SYLLABUSES.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :grade, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :grade, User::GRADES.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :subject, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :subject, Syllabus::SUBJECTS.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :topic, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :topic, class: 'form-control', placeholder: "Topic Name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :concept, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :concept, class: 'form-control', placeholder: "Concept Name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+      <%= f.submit (@syllabus.id.present? ? "Update Syllabus" : "Create Syllabus"), class: "btn btn-primary mr10" %>
+    </div>
+  </div>
+<% end %>

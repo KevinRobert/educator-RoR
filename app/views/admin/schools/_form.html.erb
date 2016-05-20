@@ -1,0 +1,76 @@
+<%= form_for [:admin, @school], html: { class: "form-horizontal mt30" } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "School Name", class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control", placeholder: "School Name" %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :grade6, "Grades", class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade6, {class: "grade-check"}, "true", "false" %><span>6th Grade</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade7, {class: "grade-check"}, "true", "false" %><span>7th Grade</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade8, {class: "grade-check"}, "true", "false" %><span>8th Grade</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade9, {class: "grade-check"}, "true", "false" %><span>9th Grade</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade10, {class: "grade-check"}, "true", "false" %><span>10th Grade</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade11, {class: "grade-check"}, "true", "false" %><span>11th Grade</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <%= f.check_box :grade12, {class: "grade-check"}, "true", "false" %><span>12th Grade</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address1, "Address", class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :address1, class: "form-control mb15", placeholder: "Address 1" %>
+      <%= f.text_field :address2, class: "form-control mb15", placeholder: "Address 2" %>
+      <%= f.text_field :city, class: "form-control mb15", placeholder: "City" %>
+      <%= f.text_field :state, class: "form-control mb15", placeholder: "State" %>
+      <%= f.text_field :pin_code, class: "form-control mb15", placeholder: "Pin Code" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :admin_id, "School Admin", class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.select :admin_id, User.where(role: [2]).map{|s| [s.name, s.id]}, {:prompt => "Choose..."}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8">
+      <%= f.submit (@school.id.present? ? "Update School" : "Create School"), class: "btn btn-primary text-center" %>
+    </div>
+  </div>
+
+<% end %>

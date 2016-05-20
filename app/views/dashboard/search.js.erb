@@ -1,0 +1,2 @@
+result = <%= @search_result.to_json.html_safe %>;
+$("#test-search-result tbody").html("<%= escape_javascript(render partial: 'test', locals: {search_result: @search_result}) %>");

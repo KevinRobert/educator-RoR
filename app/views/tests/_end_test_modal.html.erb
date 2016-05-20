@@ -1,0 +1,29 @@
+<!-- Start simple modal -->
+<div class="modal fade" id="end-test-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirmation to End Test</h4>
+      </div>
+      <div class="modal-body text-center">
+        <p>You have not yet answered <%= @user_test.unanswered_questions.length %> questions in this test. <br><br> Select the 'Yes' radio button below if you want to save the rest of your answers, complete and exit this test? <br><br> Select the 'No' radio button below if you want to discard your answers and exit this test? <br><br>Once you submit and end the test you may not be able to retake it again.</p>
+        <div class="text-center">
+          <form id="end-test-form">
+            <label class="radio-inline">
+              <input type="radio" name="save" value="no" checked>No
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="save" value="yes" checked>Yes
+            </label>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal">No</a>
+        <a class="btn btn-default btn-primary btn-confirm-yes" href="<%= current_user.student? ? '/portal' : '/admin/tests' %>">Yes</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End simple modal -->

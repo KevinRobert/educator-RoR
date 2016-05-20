@@ -1,0 +1,30 @@
+<% if @test.present? %>
+  <td>
+    <%= check_box "q", "selected", {multiple: true, class: 'available-questions'}, question.id, nil %>
+  </td>
+<% end %>
+<td class="text-center">
+  <%= @questions.offset + id + 1 %>
+</td>
+<td>
+  <%= question.question %>
+</td>
+<td>
+  <%= question.subject %>
+</td>
+<td>
+  <%= question.difficulty %>
+</td>
+<td>
+  <%= question.question_type %>
+</td>
+<td>
+  <%= question.answer_type %>
+</td>
+<td style="width: 150px;">
+  <%= link_to "Edit", edit_admin_question_path(question) %>
+  <% unless question.test_responses.present? %>
+    &nbsp;|&nbsp;
+    <%= link_to "Delete", admin_question_path(question), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  <% end %>
+</td>

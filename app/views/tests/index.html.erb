@@ -1,0 +1,11 @@
+<div class="container text-center">
+  <% unless @tests.present? %>
+    <h3>There are no tests in this subject.</h3>
+  <% else %>
+    <% @tests.each do |test| %>
+      <%= link_to test_start_path(test) do %>
+        <h4><%= test.name %></h4>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

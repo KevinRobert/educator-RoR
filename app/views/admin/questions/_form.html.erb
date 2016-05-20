@@ -1,0 +1,241 @@
+<%= form_for [:admin, @test, @question], html: { class: "form-horizontal mt30", id: "question-form" } do |f| %>
+  <div class="form-group">
+    <%= f.label :syllabus, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :syllabus, Syllabus::SYLLABUSES.map{|s| [s, s]}, {}, { multiple: true, class: "form-control", id: "q-create-syllabus", title: "Choose multi syllabuses" } %>
+      <%= hidden_field_tag :selected_syllabus, (@question.syllabus.present? ? @question.syllabus : ""), id: "selected_syllabus" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :subject, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :subject, Syllabus::SUBJECTS.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :grade, class: "col-sm-3 control-label" %>
+    <div class="col-sm-2">
+      <%= f.select :grade, User::GRADES.map{|s| [s, s]}, {}, { class: "form-control", placeholder: "Grade" } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :topic, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :topic, @topics.map{|s| [s.topic, s.topic]},{}, {class: "form-control", placeholder: "Question topic"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :concepts, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :concepts, @concepts.map{|s| [s, s]}, {}, { multiple: true, class: "form-control", id: "q-create-concepts", title: "Choose multi concepts" } %>
+      <%= hidden_field_tag :selected_concept, (@question.concepts.present? ? @question.concepts : ""), id: "selected_concept" %>
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label :difficulty, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :difficulty, Question::DIFFICULTIES.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :question_type, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :question_type, Question::TYPES.map{|s| [s, s]}, {}, { multiple: true, class: "form-control", id: "q-create-type", title: "Choose multi types" } %>
+      <%= hidden_field_tag :selected_question_type, (@question.question_type.present? ? @question.question_type : ""), id: "selected_question_type" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :answer_type, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :answer_type, Question::ANSWER_TYPES.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :question, "Question Text", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_area :question, :id => "MathInput1", class: "form-control q-admin-question", placeholder: "Question text", rows: 4, onblur: "previewMathJax(1, this.value)" %>
+        </div>
+        <div class="col-md-12">
+          <div class="box" id="box1">
+            <div id="MathOutput1"><%= @question.question %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8 text-left">
+      <div class="mt5">
+        <% if @question.image.present? %>
+          <%= image_tag @question.image.url(:thumb), class: "pull-left mr10 question-image" %>
+        <% else %>
+          <img class="pull-left mr10 question-image" />
+        <% end %>
+        <%= f.file_field :image, {:id => "question-image-input"} %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image_temp_name, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :image_temp_name, class: "form-control", placeholder: "Optional image name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :timeout, class: "col-sm-3 control-label" %>
+    <div class="col-sm-3">
+      <%= f.text_field :timeout, class: "form-control", placeholder: "in seconds(optional)" %>
+    </div>
+  </div>
+
+  <div class="form-group" style="display: <%= @question.description.present? ? 'block' : 'none' %>">
+    <%= f.label :description_title, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :description_title, class: "form-control", placeholder: "Title for RC question" %>
+    </div>
+  </div>
+
+  <div class="form-group" style="display: <%= @question.description.present? ? 'block' : 'none' %>">
+    <%= f.label :description, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :description, class: "form-control", placeholder: "For RC questions", rows: 5 %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :option1, "Answer Option1", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_field :option1, :id => "MathInput2", class: "form-control", placeholder: "Answer Option 1", onblur: "previewMathJax(2, this.value)" %>
+        </div>
+        <div class="col-md-12">
+          <div class="box" id="box2">
+            <div id="MathOutput2">` `</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :option2, "Answer Option2", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_field :option2, :id => "MathInput3", class: "form-control", placeholder: "Answer Option 2", onblur: "previewMathJax(3, this.value)" %>
+        </div>
+        <div class="col-md-12">
+          <div class="box" id="box3">
+            <div id="MathOutput3">` `</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :option3, "Answer Option3", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_field :option3, :id => "MathInput4", class: "form-control", placeholder: "Answer Option 3", onblur: "previewMathJax(4, this.value)" %>
+        </div>
+        <div class="col-md-12">
+          <div class="box" id="box4">
+            <div id="MathOutput4">` `</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :option4, "Answer Option4", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_field :option4, :id => "MathInput5", class: "form-control", placeholder: "Answer Option 4", onblur: "previewMathJax(5, this.value)" %>
+        </div>
+        <div class="col-md-12">
+          <div class="box" id="box5">
+            <div id="MathOutput5">` `</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :solution_description, "Solution", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.text_area :solution_description, :id => "MathInput6", class: "form-control q-admin-question", placeholder: "Solution Description", rows: 4, onblur: "previewMathJax(6, this.value)" %>
+        </div>
+        <div class="col-md-12">
+          <div class="box" id="box6">
+            <div id="MathOutput6"><%= @question.solution_description %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Answers</label>
+    <div class="col-sm-8">
+      <div class="row">
+        <%= f.fields_for :answer do |a| %>
+          <% (1..4).each do |index| %>
+            <div class="col-md-12">
+              <%= a.check_box :options, { :multiple => true, :checked => @question.answer.options_array.include?(index) }, index, nil %> <%= "Option #{index}" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3 control-label"></div>
+    <div class="col-sm-8">
+      <%= f.submit (@question.id.present? ? "Update Question" : "Create Question"), class: "btn btn-primary text-center" %>
+    </div>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  //
+  //  Use a closure to hide the local variables from the
+  //  global namespace
+  //
+  $(document).ready(function() {
+    //
+    //  The onchange event handler that typesets the math entered
+    //  by the user.  Hide the box, then typeset, then show it again
+    //  so we don't see a flash as the math is cleared and replaced.
+    //
+    window.previewMathJax = function (i,amath) {
+      //set the MathOutput HTML
+      $("#MathOutput" + i).html(amath);
+      //reprocess the MathOutput Element
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathOutput" + i]);
+    }
+  });
+</script>

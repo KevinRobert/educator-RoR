@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12 border-bottom text-left">
+      <%= link_to "Create User", new_admin_user_path %>
+    </div>
+    <div class="col-md-12 text-center mt5">
+      <%= form_tag admin_users_import_path, multipart: true do %>
+        <%= file_field_tag :file, class: "bulk-upload-input" %>
+        <%= submit_tag "Bulk Upload Users", class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt10">
+    <div class="col-md-12">
+      <%= form_tag admin_users_path, :method => "get" do %>
+        <div class="row mt10">
+          <div class="form-group col-sm-3">
+            <%= label_tag :role, nil, class: 'control-label' %>
+            <%= select_tag :role, options_for_select(User.roles.map{|s| [s[0], s[1]]}, params["role"]), include_blank: "All", class: "form-control", placeholder: "Roles" %>
+          </div>
+          <div class="form-group col-sm-3">
+            <%= label_tag :name, nil, class: 'control-label' %>
+            <%= text_field_tag :name, params[:name], class: "form-control" %>
+          </div>
+          <div class="form-group col-sm-3">
+            <%= label_tag :school, nil, class: 'control-label' %>
+            <%= select_tag :school, options_for_select(@schools.map{|s| [s.name, s.id]}, params["school"]), include_blank: "All", class: "form-control", placeholder: "School" %>
+          </div>
+          <div class="form-group col-sm-3">
+            <%= label_tag :grade, nil, class: 'control-label' %>
+            <%= select_tag :grade, options_for_select(User::GRADES.map{|s| [s, s]}, params["grade"]), include_blank: "All", class: "form-control", placeholder: "Grade" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <button class="btn btn-primary" type="submit">Search</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt30">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Name&nbsp;<%= sortable "name" %></th>
+              <th>User name&nbsp;<%= sortable "username" %></th>
+              <th>School</th>
+              <th>Role</th>
+              <th>Contact Email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% unless @users.present? %>
+              <tr>
+                <td colspan="6" class="text-center">There is no data</td>
+              </tr>
+            <% else %>
+              <% @users.each do |user| %>
+                <tr>
+                  <%= render user %>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>

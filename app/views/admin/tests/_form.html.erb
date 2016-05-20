@@ -1,0 +1,74 @@
+<%= form_for [:admin, @test], html: { class: "form-horizontal", id: "test-form"  } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Test Name", class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control", placeholder: "Test Name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :syllabus, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :syllabus, Syllabus::SYLLABUSES.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :grade, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :grade, User::GRADES.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :subject, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :subject, Syllabus::SUBJECTS.map{|s| [s, s]}, {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :topic, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :topic, @topics.map{|s| [s.topic, s.topic]},{}, {class: "form-control", placeholder: "Test topic"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :timeout, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :timeout, class: "form-control", placeholder: "Timeout in seconds" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, class: "col-sm-3 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_area :description, class: "form-control", placeholder: "Test instructions", :rows => 5 %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :allow_retry, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.check_box :allow_retry, {:class => ''}, "true", "false" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :report_by, class: "col-sm-3 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :report_by, [["Concept", "Concept"], ["Topic", "Topic"], ["Subject", "Subject"]], {}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+      <%= f.submit (@test.id.present? ? "Update Test" : "Create Test"), class: "btn btn-primary mr10" %>
+      <% if @test.id.present? %>
+        <%= link_to "Edit Questions", admin_test_questions_path(@test), {class: "btn btn-primary"}  %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

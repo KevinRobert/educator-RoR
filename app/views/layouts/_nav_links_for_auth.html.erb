@@ -1,0 +1,29 @@
+<% if user_signed_in? %>
+  <% if current_user.try(:website_admin?) %>
+    <li class="dropdown">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+      <ul class="dropdown-menu dropdown-menu-left">
+        <li><%= link_to 'Schools', admin_schools_path %></li>
+        <li><%= link_to 'Users', admin_users_path %></li>
+        <li><%= link_to 'Tests', admin_tests_path %></li>
+        <li><%= link_to 'Questions', admin_questions_path %></li>
+        <li><%= link_to 'Syllabuses', admin_syllabuses_path %></li>
+      </ul>
+    </li>
+  <% elsif current_user.try(:school_admin?) %>
+    <li class="dropdown">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle">Admin <b class="caret"></b></a>
+      <ul class="dropdown-menu dropdown-menu-left">
+        <li><%= link_to 'Users', admin_users_path %></li>
+      </ul>
+    </li>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+<% else %>
+  <li><%= link_to 'Sign in', new_user_session_path %></li>
+  <li><%= link_to 'Sign up', new_user_registration_path %></li>
+<% end %>

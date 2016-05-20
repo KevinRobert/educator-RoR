@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12 border-bottom">
+      <%= link_to "Back to Test Question List", admin_test_questions_path(@test) %>
+    </div>
+
+    <div class="col-md-10 mt30">
+      <div class="row">
+        <div class="col-xs-2 text-right"><strong>Subject:</strong></div>
+        <div class="col-xs-10"><%= @question.subject %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Topic:</strong></div>
+        <div class="col-xs-10"><%= @question.topic %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Grade:</strong></div>
+        <div class="col-xs-10"><%= @question.grade %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Difficulty:</strong></div>
+        <div class="col-xs-10"><%= @question.difficulty %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Question Type:</strong></div>
+        <div class="col-xs-10"><%= @question.question_type %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Answer Type:</strong></div>
+        <div class="col-xs-10"><%= @question.answer_type %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Concepts:</strong></div>
+        <div class="col-xs-10"><%= @question.concepts %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Question:</strong></div>
+        <div class="col-xs-10"><%= @question.question %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Image:</strong></div>
+        <div class="col-xs-10">
+          <% if @question.image.present? %>
+            <%= image_tag @question.image.url(:thumb), class: "pull-left mr10 question-image" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Time out:</strong></div>
+        <div class="col-xs-10"><%= @question.timeout.present? ? "#{@question.timeout}S" : "" %></div>
+      </div>
+      <% if @question.description.present? %>
+        <div class="row mt5">
+          <div class="col-xs-2 text-right"><strong>Description Title:</strong></div>
+          <div class="col-xs-10"><%= @question.description_title %></div>
+        </div>
+        <div class="row mt5">
+          <div class="col-xs-2 text-right"><strong>Description:</strong></div>
+          <div class="col-xs-10"><%= @question.description %></div>
+        </div>
+      <% end %>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Option1:</strong></div>
+        <div class="col-xs-10"><%= @question.option1 %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Option2:</strong></div>
+        <div class="col-xs-10"><%= @question.option2 %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Option3:</strong></div>
+        <div class="col-xs-10"><%= @question.option3 %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Option4:</strong></div>
+        <div class="col-xs-10"><%= @question.option4 %></div>
+      </div>
+      <div class="row mt5">
+        <div class="col-xs-2 text-right"><strong>Solution:</strong></div>
+        <div class="col-xs-10"><%= @question.solution_description %></div>
+      </div>
+    </div>
+  </div>
+</div>

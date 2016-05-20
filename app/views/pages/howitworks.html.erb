@@ -1,0 +1,85 @@
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Overview -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Features that Improve Your Score
+            </h1>
+            <p class="lead">SmilePrep is much more than just a set of questions and video lessons. Our platform customizes your learning to your strengths and weaknesses. With SmilePrep, you'll make more progress in less time than with any other program. Guaranteed!</p>
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <%= image_tag "website/customization.svg", class: "img_responsive hiw" %>
+                    <u><h3>Customization:</h3></u>
+                    <p class="lead">Our smart diagnostic figures out your true skill level and builds a custom prep program that caters to your difficulty level. You'll make the fastest progress.</p>
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-4">
+
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <%= image_tag "website/tutoring.jpg", class: "img_responsive hiw" %>
+                    <u><h3>Clear Guidance:</h3></u>
+                    <p class="lead">We give you exact step-by-step instructions on what to study: which lessons to take, when to take practice tests, and how to review your mistakes.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+
+
+            <div class="panel panel-default text-center">
+                <div class="panel-body">
+                    <%= image_tag "website/motivation.png", class: "img_responsive hiw" %>
+                    <u><h3>Motivation:</h3></u>
+                    <p class="lead">With weekly reports, progress trackers, and customized feedback, we motivate you to make progress. You'll study smarter with SmilePrep than with anyone else.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+    <div class="row"><p></p></div>
+
+    <!-- Video -->
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>Top Quality Videos in Select Lessons</h2>
+            <p class="lead">Many lessons have included videos to explain the content and strategies you need to ace the JEE. These high-quality interactive videos supplement your in-school learning to carefully explain the most difficult concepts. But unlike many other programs, we're much more than a collection of videos. Check out our other features to find out more! Click play to see a physics video excerpt.</p>
+        </div>
+
+
+        <div class="col-lg-6">
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/kJg8BXi3_Bw"></iframe>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <div class="row"><p></p></div>
+
+    <!-- FAQ -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>Have any questions about our program?</h2>
+            <p class="lead">Consult our FAQ, where we tell you how to get started and more details about how SmilePrep works.</p>
+            <%= link_to 'Read our FAQ', page_path('faq'), {:class=> 'btn btn-default'}  %>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+ 
+</div>
+<!-- /.container -->
+
+<%= render 'layouts/footer' %>

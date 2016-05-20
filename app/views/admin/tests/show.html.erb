@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12">
+      <%= link_to "Back to Test List", @back_url %>
+    </div>
+  </div>
+
+  <div class="row mt10">
+    <div class="col-md-8">
+      <div class="row">
+        <label class="col-sm-3 text-right">Test Name</label>
+        <div class="col-sm-8">
+          <%= @test.name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-3 text-right">Syllabus</label>
+        <div class="col-sm-8">
+          <%= @test.syllabus %>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-3 text-right">Grade</label>
+        <div class="col-sm-8">
+          <%= @test.grade %>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-3 text-right">Subject</label>
+        <div class="col-sm-8">
+          <%= @test.subject %>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-3 text-right">Topic</label>
+        <div class="col-sm-8">
+          <%= @test.topic %>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-3 text-right">Timeout</label>
+        <div class="col-sm-8">
+          <%= "#{@test.timeout}s" if @test.timeout.present? %>
+        </div>
+      </div>
+
+      <div class="row">
+        <label class="col-sm-3 text-right">Description</label>
+        <div class="col-sm-8">
+          <%= @test.description %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-8">
+          <%= link_to "Edit Test", edit_admin_test_path(@test), class: "btn btn-primary mr10" %>
+          <%= link_to "Edit Questions", admin_test_questions_path(@test), {class: "btn btn-primary"}  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

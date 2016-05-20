@@ -1,0 +1,56 @@
+<%= form_for [:admin, @user], html: { id: "edit-user-form", class: "form-horizontal mt30" } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :name, class: "form-control", placeholder: "Full Name" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :username, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :username, class: "form-control", placeholder: "User ID" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :contact_email, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <%= f.text_field :contact_email, class: "form-control", placeholder: "Contact Email" %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+  <%= f.label :school, class: "col-sm-4 control-label" %>
+    <div class="col-sm-8">
+      <% if @user.id.present? %>
+        <%= text_field_tag :school_name, (@user.school.present? ? @user.school.name : ""), class: "form-control", :readonly => true, :data => {:id => @user.school.present? ? @user.school.id : ""} %>
+      <% else %>
+        <%= f.select :school_id, @schools.map {|s| [s.name, s.id]}, {}, {class: "form-control"} %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :role, class: "col-sm-4 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :role, User.roles.keys.map {|role| [role.titleize,role]}, {}, {class: "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :grade, class: "col-sm-4 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :grade, @available_grades.map {|grade| [grade.titleize, grade]}, {}, {class: "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :section_id, "Section", class: "col-sm-4 control-label" %>
+    <div class="col-sm-4">
+      <%= f.select :section_id, @sections.map {|s| [s.name, s.id]}, {}, {class: "form-control"} %>
+    </div>
+  </div>
+  
+  <%= f.submit (@user.id.present? ? "Update User" : "Create User"), class: "btn btn-primary text-center" %>
+<% end %>

@@ -1,0 +1,52 @@
+<div class="container text-center">
+  <% if @test_time_available == 0 || @test_time_available == 3 %>
+    <div class="row mt30">
+      <div class="col-md-12">
+        <h4>This test <strong><%= @test.name %></strong> consists of <%= @test.questions.length %> questions.</h4>
+      </div>
+    </div>
+
+    <div class="row mt30">
+      <div class="col-md-12" style="text-align: left">
+        <%= simple_format @test.description if @test.description.present? %>
+      </div>
+    </div>
+
+    <div class="row mt30">
+      <div class="col-md-12">
+        <p>Click <strong>Start</strong> button to start the test.</p>
+      </div>
+    </div>
+
+    <div class="row mt10">
+      <div class="col-md-12 text-center">
+        <% if @test_time_available == 0 %>
+          <%= link_to 'Start Test', test_test_path, :class => "btn btn-primary btn-lg" %>
+        <% else %>
+          <%= link_to 'Continue Test', test_continue_path, :class => "btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
+    </div>
+  <% elsif @test_time_available == 1 %>
+    <div class="row mt30">
+      <div class="col-md-12 text-center">
+        <h3>
+          Your <%= @section_test.test.subject %> test will begin in 
+          <% if @time_diff[0] > 0 %>
+            <%= @time_diff[0] %>days and&nbsp;
+          <% end %>
+          <%= @time_diff[1] %>hours.
+        </h3>
+      </div>
+    </div>
+  <% else %>
+    <div class="row mt30">
+      <div class="col-md-12 text-center">
+        <h3>
+          You're not available for this test at this moment.
+        </h3>
+        <%= link_to 'Back', :back, :class => "btn btn-primary btn-md" %>
+      </div>
+    </div>
+  <% end %>
+</div>

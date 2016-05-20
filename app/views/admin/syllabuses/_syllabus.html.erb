@@ -1,0 +1,23 @@
+<td>
+  <%= id + 1 %>
+</td>
+<td>
+  <%= syllabus.syllabus %>
+</td>
+<td>
+  <%= syllabus.grade %>
+</td>
+<td>
+  <%= syllabus.subject %>
+</td>
+<td>
+  <%= syllabus.topic %>
+</td>
+<td>
+  <%= syllabus.concept %>
+</td>
+<td style="width: 200px;">
+  <%= link_to "Edit", edit_admin_syllabus_path(syllabus) %>
+  &nbsp;|&nbsp;
+  <%= link_to "Remove", admin_syllabus_path(syllabus), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+</td>

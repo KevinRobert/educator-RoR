@@ -1,0 +1,18 @@
+<% unless @search_result.present? %>
+  <tr>
+    <td colspan="6" class="text-center">There is no data.</td>
+  </tr>
+<% else %>
+  <% @search_result.each do |row| %>
+    <tr>
+      <td><%= row.test.name %></td>
+      <td><%= row.test.subject %></td>
+      <td><%= row.test.topic %></td>
+      <td><%= row.start_at.present? ? row.start_at.strftime("%m/%d/%Y") : "" %></td>
+      <td><%= row.completed_rate %>%</td>
+      <td>
+        <%= link_to 'View', detail_admin_dashboard_index_path(row.id) %>
+      </td>
+    </tr>
+  <% end %>
+<% end %>

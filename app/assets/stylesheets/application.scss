@@ -1,0 +1,24 @@
+// import Bootstrap
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-datetimepicker";
+@import "bootstrap-select/bootstrap-select";
+
+// jquery-ui
+@import "jquery-ui/jquery-ui";
+
+// Core variables and mixins
+@import "variables";
+@import "mixins";
+
+// Base styles over the all pages
+@import "base";
+
+// specific styles
+@import "1st_load_framework";
+@import "modern-business";
+
+@import "tests";
+@import "admin";
+@import "portal";
+

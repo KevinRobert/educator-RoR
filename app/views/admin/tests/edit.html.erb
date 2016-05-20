@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12 border-bottom">
+      <%= link_to "Back to Test List", @back_url %>
+    </div>
+
+    <div class="col-md-10 mt30">
+      <%= render 'form' %>
+    </div>
+  </div>
+
+  <% if @test.id.present? %>
+    <div class="row mt30">
+      <div class="col-md-12 border-bottom">
+        Test-Section Mapping
+      </div>
+
+      <div class="col-md-10 mt10">
+        <%= form_for [:admin, @test], url: admin_test_update_section_path(@test), html: { class: "form-horizontal mt30" } do |f| %>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">School</label>
+            <div class="col-sm-4">
+              <%= select_tag :school, options_for_select(@schools.map{|s| [s.name, s.id]}), include_blank: "All", id: "test-school", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Section</label>
+            <div class="col-sm-4">
+              <div id="school-sections" class="row">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group test-start-at">
+            <label class="col-sm-3 control-label">Start At</label>
+            <div class="col-sm-4">
+              <%= text_field_tag :start_at, params[:start_at], id: "test-start-at", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-group test-end-at">
+            <label class="col-sm-3 control-label">End At</label>
+            <div class="col-sm-4">
+              <%= text_field_tag :end_at, params[:start_at], id: "test-end-at", class: "form-control" %>
+            </div>
+            <div class="col-sm-4">
+              <button type="submit" class="btn btn-primary mr10">Update</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row mt30">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>School</th>
+                <th>Grade</th>
+                <th>Section</th>
+                <th>Start At</th>
+                <th>End At</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% unless @test_sections.present? %>
+                <tr>
+                  <td colspan="6" class="text-center">There is no data</td>
+                </tr>
+              <% else %>
+                <% @test_sections.each do |test_section| %>
+                  <tr>
+                    <td><%= test_section.section.school.name %></td>
+                    <td><%= test_section.section.grade %></td>
+                    <td><%= test_section.section.name %></td>
+                    <td><%= test_section.start_at.strftime("%Y-%m-%d %I:%M %p") if test_section.start_at.present? %></td>
+                    <td><%= test_section.end_at.strftime("%Y-%m-%d %I:%M %p") if test_section.end_at.present? %></td>
+                    <td><%= link_to "Delete", admin_destroy_test_section_path(test_section), method: :delete %></td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

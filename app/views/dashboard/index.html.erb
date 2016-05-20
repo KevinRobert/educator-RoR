@@ -1,0 +1,133 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12 border-bottom alert alert-info">
+      
+      <%= form_tag dashboard_index_path, method: :get, class: "form-inline" do %>
+        <% if current_user.website_admin? %>
+          <h3>Please select school and grade below to view dashboard</h3><br>
+          <div class="form-group col-md-6">
+            <%= label_tag :school, nil %>
+            <%= select_tag :school, options_for_select(@schools.map{|s| [s.name, s.id]}, params[:school]), {id: "school-select", class: "form-control", placeholder: "School"} %>
+          </div>
+          <div class="form-group col-md-3 text-left">
+            <%= label_tag :grade, nil %>
+            <%= select_tag :grade, options_for_select(@grades.map{|s| [s, s]}, params[:grade]), {id: "grade-select", class: "form-control", placeholder: "Grade"} %>
+            <button type="submit" class="btn btn-primary">Select</button>
+          </div>
+        <% else %>
+          <h3>Please select grade below to view dashboard</h3><br>
+          <div class="form-group col-sm-3 text-left">
+            <%= label_tag :grade, nil %>
+            <%= select_tag :grade, options_for_select(@grades.map{|s| [s, s]}, params[:grade]), {id: "grade-select", class: "form-control", placeholder: "Grade"} %>
+            <button type="submit" class="btn btn-primary">Select</button>
+          </div>
+        <% end %>
+
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Start upcoming test -->
+  <div class="row mt10" id="upcoming-tests">
+    <div class="col-md-12">
+      <h3>Upcoming Tests</h3>
+      <% unless @upcoming_tests.present? %>
+        <p>There is no data.</p>
+      <% else %>
+        <% @upcoming_tests.each_with_index do |test, test_index| %>
+          <p class="<%= test_index > 4 ? 'hide' : '' %>">
+            <%= upcoming_test_title(test) %>
+          </p>
+        <% end %>
+        <% if @upcoming_tests.length > 5 %>
+          <div><a href="#" class="view-more">View More</a></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <!-- End upcoming test -->
+
+  <!-- Start recent test -->
+  <div class="row mt10" id="recent-tests">
+    <div class="col-md-12">
+      <h3>Recent Tests</h3>
+      <% unless @recent_tests.present? %>
+        <p>There is no data.</p>
+      <% else %>
+        <% @recent_tests.each_with_index do |section_test, test_index| %>
+          <p class="<%= test_index > 4 ? 'hide' : '' %>">
+            <%= link_to recent_test_title(section_test), detail_dashboard_index_path(section_test) %>
+          </p>
+        <% end %>
+        <% if @recent_tests.length > 5 %>
+          <div><a href="#" class="view-more">View More</a></div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <!-- End recent test -->
+
+  <!-- Start search result -->
+  <div class="row mt10">
+    <div class="col-md-12">
+      <%= form_tag search_dashboard_index_path, method: :get, remote: :true, class: "form-horizontal", id: "search-test-form" do %>
+        <h3>Search for Test Results</h3>
+        
+        <div class="row mt10">
+          <div class="form-group col-sm-4">
+            <%= label_tag :subject, nil, class: "col-sm-4 control-label" %>
+            <div class="col-sm-8">
+              <%= select_tag :subject, options_for_select(Syllabus::SUBJECTS.map{|s| [s, s]}, params[:subject]), {class: "form-control", placeholder: "Subject", prompt: "All"} %>
+            </div>
+          </div>
+          <div class="form-group col-sm-4">
+            <%= label_tag :chapter, nil, class: "col-sm-4 control-label" %>
+            <div class="col-sm-8">
+              <%= select_tag :chapter, options_for_select(Test::TOPICS.map{|s| [s, s]}, params[:topic]), {class: "form-control", placeholder: "Chapter", prompt: "All"} %>
+            </div>
+          </div>
+          <div class="form-group col-sm-4">
+            <%= label_tag :test_date, nil, class: "col-sm-4 control-label" %>
+            <div class="col-sm-8">
+              <div class="input-group date" id="test-date">
+                <%= text_field_tag :test_date, params[:test_date], id: "test-date", class: "form-control" %>
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <%= hidden_field_tag :school, params[:school] %>
+            <%= hidden_field_tag :grade, params[:grade] %>
+            <button type="submit" class="btn btn-primary">Search Now</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-12 mt30">
+      <div class="table-responsive">
+        <table class="table table-bordered" id="test-search-result">
+          <thead>
+            <tr>
+              <td>Test Name</td>
+              <td>Subject</td>
+              <td>Chapter</td>
+              <td>Test Date</td>
+              <td>% Completed</td>
+              <td>Active (View)</td>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render "test" %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- End search result -->
+</div>

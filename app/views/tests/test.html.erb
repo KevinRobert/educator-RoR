@@ -1,0 +1,188 @@
+<script type="text/javascript">
+// if (window.MathJax) {
+
+//   MathJax.Hub.Queue(
+//       function () {
+//         $('.q-option-desc').css({ 'visibility': "" });
+//       }
+//   );
+// }
+</script>
+
+<%= simple_form_for @test_response, url: test_submit_path, method: :post, :html => { id: "question-form"} do |f| %>
+  
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :test_id, value: @test.id %>
+  <%= f.hidden_field :question_id, value: @question.id %>
+  <%= f.hidden_field :user_test_id, value: @user_test.id %>
+  <%= f.hidden_field :answer_time, value: "0" %>
+  <%= f.hidden_field :force_end, value: false %>
+
+  <input type="hidden" id="answer-type" value="<%= @question.answer_type %>" />
+  <input type="hidden" name="nav-type" id="nav-type" />
+  <input type="hidden" id="test_timeout" value="<%= @test.timeout.present? ? @test.timeout : 0 %>">
+  <input type="hidden" id="timeout" value="<%= @question.timed ? @question.timeout : 0 %>" />
+  <input type="hidden" id="elapsed_time" value="<%= @elapsed_time %>" />
+  <input type="hidden" id="last-question" value="<%= @is_last_question %>" />
+  <input type="hidden" id="all-answered" value="<%= @all_answered %>" />
+
+  <div class="container-fluid mt30">
+    <div class="row mb15">
+      <div class="col-xs-4">
+        <div class="q-report-problem">
+          <a href="#" data-toggle="modal" data-target="#contact-modal">
+            <i class="fa fa-bullhorn"></i> Report a Problem
+          </a>
+        </div>
+      </div>
+
+      <div class="col-xs-4 text-center">
+        <div class="q-time-ctrl"><a href="#" id="pause-test" class="q-pause"><i class="fa fa-pause"></i></a></div>
+        <div class="q-ellapse-time"></div>
+      </div>
+
+      <div class="col-xs-4">
+        <div class="q-end-test">
+          <a class="" data-toggle="modal" data-target="#end-test-modal">
+            <i class="fa fa-external-link"></i>&nbsp;End Test
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row mb50">
+      <div class="<%= @question.description.present? ? 'col-sm-6' : 'col-sm-12' %>">
+        <div class="row">
+          <div class="col-xs-10">
+            <!--Start question mark -->
+            <div class="q-no-section pull-left">
+              <div class="q-no-circle"><%= @question_idx %></div>
+              <div class="q-total-count mt5">of <%= @question_count %></div>
+            </div>
+            <!--End question mark -->
+
+            <!--Start question section -->
+            <div class="q-section pull-left">
+              <div class="row">
+
+                <div class="col-md-12">
+                  <% if @question.image.present? %>
+                    <%= image_tag @question.image.url(:medium), :class => "mt10 q-image" %>
+                  <% elsif @question.image_temp_name.present? %>
+                    <%= image_tag "questions/#{@question.image_temp_name}", :class => "mt10 q-image" %>
+                  <% end %>
+                </div>
+
+                <div class="col-md-12 mt10">
+                  <strong class="q-question">
+                    <%= @question.question %>
+                  </strong>
+                </div>
+              </div>
+
+              <div class="row mt10 no-gutter">
+                <div class="<%= @question.description.present? ? 'col-sm-12' : 'col-sm-8' %>">
+                  <div class="row">
+                    <% (1..4).each do |index| %>
+                      <% checked = (@test_response.answer_options.present? && @test_response.answer_options.include?(index.to_s)) %>
+                      <% if @question.send("option#{index}").present? %>
+                        <div class="col-md-12 q-option <%= checked ? 'selected' : 'x'  %>">
+                          <%= check_box_tag 'test_response[answer_options][]', index, checked, style: "display: none;", :class => "question-answer-checkbox" %>
+
+                          <div class="q-option-index pull-left 
+                            <%= checked ? 'selected' : 'x'  %>">
+                            <%= to_alphabet(index) %>
+                          </div>
+
+                          <div class="q-option-desc pull-left" style="visibility: ''">
+                              <%= @question.send("option#{index}") %>
+                          </div>
+                        
+                          <div class="clearfix"></div>
+                        </div>
+                      <% end %>
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--End question section -->
+        </div>
+      </div>
+
+      <% if @question.description.present? %>
+        <div class="col-sm-6 q-reading-section">
+          <div class="row">
+            <div class="col-md-10">
+              <div>
+                <i><strong><%= @question.description_title %></strong></i>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="q-reading-line"></div>
+              <div class="q-reading-desc">
+                <%= @question.description %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Start test screen footer -->
+  <footer class="q-footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-4">
+          <% if @test.timeout.present? %>
+            <div class="q-nav-icon" class="<%= 'non-active' if @question_idx == 1 %>">
+              <%= link_to "#", :class => (@question_idx == 1 ? "q-prev non-active": "q-prev") do %>
+                <i class="fa fa-caret-left"></i>&nbsp;Prev
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-xs-4 text-center">
+          <%= f.submit "Submit Answer", :id => 'submit-answer', :class => "btn btn-primary q-submit-answer" %>
+        </div>
+        <div class="col-xs-4 text-right">
+          <% if @test.timeout.present? %>
+            <div class="q-nav-icon" class="<%= 'non-active' if @question_idx == @test.questions.length %>">
+              <%= link_to "#", :class => (@question_idx == @test.questions.length ? "q-next non-active": "q-next") do %>
+                Next&nbsp;<i class="fa fa-caret-right"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- End test screen footer -->
+<% end %>
+
+<!-- Start gray layout -->
+<div class="pause-screen">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 q-pause-desc">
+      <h4>You've paused the diagnostic.</h4>
+      <p class="mt10 mb30">For the most accurate diagnostic, please try to complete the diagnostic without pausing. If you do have to pause, try not to do any extra work on the question. Even if you miss questions or run out of time of a question, this will really help us identify your strengths and weaknesses!</p>
+      <button class="btn btn-primary q-resume-btn">Resume</button>
+    </div>
+  </div>
+</div>
+<!-- End gray layout -->
+
+<%= render partial: 'tests/simple_modal', :locals => { :id => 'choose-answer-modal', :message_body => 'Please choose the answer before submit.'} %>
+
+<%= render partial: 'tests/simple_modal', :locals => { :id => 'timeout-modal', :message_body => 'Time has expired. Moving to the next questions.'} %>
+
+<%= render partial: 'tests/end_test_modal' %>
+
+<%= render partial: 'tests/confirm_modal', :locals => { :id => 'final-question-modal', :message_body => 'You didn\'t fully answered test questions. Do you really want to end the test?', :yes_url => '#'} %>
+
+<%= render partial: 'tests/contact_modal' %>

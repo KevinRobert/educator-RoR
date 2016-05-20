@@ -1,0 +1,51 @@
+.test-summary {
+  line-height: 30px;
+}
+
+.accordion-expand-holder {
+  text-align: center;
+  padding: 10px;
+}
+
+.progress-chart {
+  .col-sm-4:first-child {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  .col-sm-4 {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  .col-sm-4:last-child {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+  }
+
+  .chart-section {
+    height: 250px;
+    margin-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .highcharts-container {
+    border: 1px solid #555;
+  }
+}
+
+.highcharts-legend-item > span {
+  width: 70px !important;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+  padding-right: 0;
+  padding-left: 0;
+}

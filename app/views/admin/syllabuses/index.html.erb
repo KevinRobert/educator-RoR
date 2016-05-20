@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row mt30">
+    <div class="col-md-12 border-bottom">
+      <%= link_to "Create New Syllabus", new_admin_syllabus_path %>
+    </div>
+  </div>
+
+  <div class="row mt10">
+    <div class="col-md-12">
+      <%= form_tag admin_syllabuses_path, :method => "get" do %>
+        <div class="row mt10">
+          <div class="form-group col-sm-4">
+            <label class="control-label">Syllabus</label>
+            <%= select_tag :syllabus, options_for_select(Syllabus::SYLLABUSES.map{|s| [s, s]}, params["syllabus"]), include_blank: "All", class: "form-control", placeholder: "Syllabus" %>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="control-label">Grade</label>
+            <%= select_tag :grade, options_for_select(User::GRADES.map{|s| [s, s]}, params["grade"]), include_blank: "All", class: "form-control", placeholder: "Grade" %>
+          </div>
+          <div class="form-group col-sm-4">
+            <label class="control-label">Subject</label>
+            <%= select_tag :subject, options_for_select(Syllabus::SUBJECTS.map{|s| [s, s]}, params["subject"]), include_blank: "All", class: "form-control", placeholder: "Subject" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <button class="btn btn-default" type="submit">Search</button>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mt30">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Syllabus&nbsp;<%= sortable "syllabus" %></th>
+              <th>Grade&nbsp;<%= sortable "grade" %></th>
+              <th>Subject&nbsp;<%= sortable "subject" %></th>
+              <th>Topic&nbsp;<%= sortable "topic" %></th>
+              <th>Concept&nbsp;<%= sortable "concept" %></th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% unless @syllabuses.present? %>
+              <tr>
+                <td colspan="6">There is no data</td>
+              </tr>
+            <% else %>
+              <% @syllabuses.each_with_index do |syllabus, syllabus_index| %>
+                <tr>
+                <%= render syllabus, :id => syllabus_index %>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-12 text-center">
+      <%= will_paginate @tests, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+
+</div>
